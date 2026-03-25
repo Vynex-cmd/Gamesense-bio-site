@@ -1,0 +1,133 @@
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #0b0b0b;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Loader /
+#loader {
+    text-align: center;
+}
+
+.loading-text {
+    opacity: 0.6;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {opacity: 0.3;}
+    50% {opacity: 1;}
+    100% {opacity: 0.3;}
+}
+
+/ Layout /
+.container {
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    animation: fadeIn 0.5s ease;
+}
+
+.hidden { display: none; }
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(10px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+/ Logo /
+.logo span {
+    color: #7CFC00;
+    text-shadow: 0 0 10px #7CFC00;
+}
+
+/ Input /
+input {
+    padding: 10px;
+    width: 80%;
+    border-radius: 6px;
+    border: none;
+    margin-top: 15px;
+}
+
+/ Button /
+button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background: #7CFC00;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 0 0 10px #7CFC00;
+}
+
+/ Profile /
+.pfp {
+    width: 100px;
+    border-radius: 50%;
+    margin-top: 20px;
+    box-shadow: 0 0 15px #7CFC00;
+}
+
+/ Username /
+.username {
+    font-size: 22px;
+    margin-top: 10px;
+}
+
+/ Badges /
+.badge {
+    width: 22px;
+    margin: 3px;
+    position: relative;
+}
+
+.badge:hover::after {
+    content: attr(data-name);
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: black;
+    padding: 4px 6px;
+    font-size: 10px;
+    border-radius: 4px;
+}
+
+/ Links /
+.links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 6px;
+    color: #7CFC00;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.links a:hover {
+    text-shadow: 0 0 10px #7CFC00;
+}
+
+.links img {
+    width: 18px;
+    margin-right: 8px;
+}
+
+hr {
+    border: 1px solid #222;
+}
+
+/ Player */
+.player {
+    margin-top: 15px;
+}
+
+.player input {
+    width: 100%;
+}
