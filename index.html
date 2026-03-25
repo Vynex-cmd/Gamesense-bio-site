@@ -4,154 +4,28 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>gamesense</title>
-
-<style>
-body {
-    margin: 0;
-    font-family: Arial;
-    background: #0b0b0b;
-    color: white;
-    overflow: hidden;
-}
-
-/* FULL PAGE SCREENS /
-#loginPage, #profilePage {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-/ Hide profile initially /
-#profilePage {
-    display: none;
-    opacity: 0;
-}
-
-/ Fade animation /
-.fade {
-    transition: opacity 0.4s ease;
-}
-
-/ Logo /
-.logo span {
-    color: #7CFC00;
-    text-shadow: 0 0 10px #7CFC00;
-}
-
-/ Input /
-input {
-    padding: 10px;
-    width: 220px;
-    border-radius: 6px;
-    border: none;
-    margin-top: 15px;
-}
-
-/ Button /
-button {
-    margin-top: 10px;
-    padding: 10px 20px;
-    background: #7CFC00;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    box-shadow: 0 0 10px #7CFC00;
-}
-
-/ Profile container /
-.container {
-    text-align: center;
-    width: 90%;
-    max-width: 400px;
-}
-
-/ Profile /
-.pfp {
-    width: 100px;
-    border-radius: 50%;
-    margin-top: 20px;
-    box-shadow: 0 0 15px #7CFC00;
-}
-
-/ Username /
-.username {
-    font-size: 22px;
-    margin-top: 10px;
-}
-
-/ Badges /
-.badge {
-    width: 22px;
-    margin: 3px;
-    position: relative;
-}
-.badge:hover::after {
-    content: attr(data-name);
-    position: absolute;
-    bottom: -25px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: black;
-    padding: 4px 6px;
-    font-size: 10px;
-    border-radius: 4px;
-}
-
-/ Links /
-.links a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 6px;
-    color: #7CFC00;
-    text-decoration: none;
-    transition: 0.2s;
-}
-.links a:hover {
-    text-shadow: 0 0 10px #7CFC00;
-}
-.links img {
-    width: 18px;
-    margin-right: 8px;
-}
-
-hr {
-    border: 1px solid #222;
-}
-
-/ Player /
-.player {
-    margin-top: 15px;
-}
-.player input {
-    width: 100%;
-}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- LOGIN PAGE -->
-<div id="loginPage" class="fade">
+<canvas id="particles"></canvas>
+
+<!-- LOGIN -->
+<div id="loginPage">
     <h1 class="logo">game<span>sense</span></h1>
     <input type="password" id="password" placeholder="Enter password">
     <button onclick="login()">Enter</button>
 </div>
 
-<!-- PROFILE PAGE -->
-<div id="profilePage" class="fade">
+<!-- PROFILE -->
+<div id="profilePage">
     <div class="container">
 
         <img src="images/pfp.png" class="pfp">
 
         <div class="username">
-            YourName
+            <span id="typedName"></span>
             <div class="badges">
                 <img src="images/badge-admin.png" class="badge" data-name="Admin">
                 <img src="images/badge-dev.png" class="badge" data-name="Developer">
@@ -159,7 +33,7 @@ hr {
             </div>
         </div>
 
-        <p>Your bio here...</p>
+        <p class="bio">Your bio here...</p>
 
         <div class="links">
             <a href="#"><img src="images/instagram.png">Instagram</a>
@@ -188,64 +62,6 @@ hr {
     </div>
 </div>
 
-<script>
-const PASSWORD = "CHANGE_ME";
-
-/ Login with fade /
-function login() {
-    const input = document.getElementById("password").value;
-
-    if (input === PASSWORD) {
-        const loginPage = document.getElementById("loginPage");
-        const profilePage = document.getElementById("profilePage");
-
-        loginPage.style.opacity = "0";
-
-        setTimeout(() => {
-            loginPage.style.display = "none";
-            profilePage.style.display = "flex";
-
-            setTimeout(() => {
-                profilePage.style.opacity = "1";
-            }, 50);
-
-        }, 400);
-    } else {
-        alert("Wrong password");
-    }
-}
-
-/ Crypto copy /
-const wallets = {
-    btc: "YOUR_BTC_ADDRESS",
-    eth: "YOUR_ETH_ADDRESS",
-    sol: "YOUR_SOL_ADDRESS",
-    trx: "YOUR_TRX_ADDRESS",
-    ltc: "YOUR_LTC_ADDRESS"
-};
-
-function copy(type) {
-    navigator.clipboard.writeText(wallets[type]);
-    alert(type.toUpperCase() + " copied!");
-}
-
-/ Music */
-const audio = document.getElementById("audio");
-const progress = document.getElementById("progress");
-
-function toggleMusic() {
-    if (audio.paused) audio.play();
-    else audio.pause();
-}
-
-audio.ontimeupdate = () => {
-    progress.value = (audio.currentTime / audio.duration) * 100;
-};
-
-progress.oninput = () => {
-    audio.currentTime = (progress.value / 100) * audio.duration;
-};
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
