@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>gamesense</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- LOADING -->
+<div id="loader">
+    <h1 class="logo">game<span>sense</span></h1>
+    <p class="loading-text">Please wait...</p>
+</div>
+
+<!-- LOGIN -->
+<div class="container hidden" id="login">
+    <h1 class="logo">game<span>sense</span></h1>
+    <input type="password" id="password" placeholder="Enter password">
+    <button onclick="login()">Enter</button>
+</div>
+
+<!-- PROFILE -->
+<div class="container hidden" id="profile">
+
+    <img src="images/pfp.png" class="pfp">
+
+    <div class="username">
+        YourName
+        <div class="badges">
+            <img src="images/badge-admin.png" class="badge" data-name="Admin">
+            <img src="images/badge-dev.png" class="badge" data-name="Developer">
+            <img src="images/badge-og.png" class="badge" data-name="OG User">
+        </div>
+    </div>
+
+    <p class="bio">Your bio here...</p>
+
+    <div class="links">
+        <a href="#"><img src="images/instagram.png">Instagram</a>
+        <a href="#"><img src="images/tiktok.png">TikTok</a>
+        <a href="#"><img src="images/youtube.png">YouTube</a>
+        <a href="#"><img src="images/discord.png">Discord</a>
+
+        <hr>
+
+        <a onclick="copy('btc')"><img src="images/btc.png">BTC</a>
+        <a onclick="copy('eth')"><img src="images/eth.png">ETH</a>
+        <a onclick="copy('sol')"><img src="images/sol.png">SOL</a>
+        <a onclick="copy('trx')"><img src="images/trx.png">TRX</a>
+        <a onclick="copy('ltc')"><img src="images/ltc.png">LTC</a>
+    </div>
+
+    <!-- MUSIC -->
+    <div class="player">
+        <button onclick="toggleMusic()">▶ / ⏸</button>
+        <input type="range" id="progress" value="0">
+    </div>
+
+    <audio id="audio">
+        <source src="music/song.mp3" type="audio/mpeg">
+    </audio>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
