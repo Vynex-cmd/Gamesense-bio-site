@@ -4,14 +4,25 @@ body {
     background: #0b0b0b;
     color: white;
     overflow: hidden;
+    cursor: none;
 }
 
-/* PARTICLES /
+/* CUSTOM CURSOR /
+#cursor {
+    width: 10px;
+    height: 10px;
+    background: #7CFC00;
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    box-shadow: 0 0 10px #7CFC00;
+}
+
+/ PARTICLES /
 #particles {
     position: fixed;
     width: 100%;
     height: 100%;
-    z-index: 0;
 }
 
 / SCREENS /
@@ -19,86 +30,54 @@ body {
     position: fixed;
     width: 100%;
     height: 100%;
-    top: 0;
-    left: 0;
-
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-
-    transition: opacity 0.4s ease;
 }
 
-/ LOGIN /
 #loginPage {
     z-index: 2;
-    background: #0b0b0b;
 }
 
-/ PROFILE /
 #profilePage {
-    z-index: 1;
-    background: #0b0b0b;
-
     opacity: 0;
     visibility: hidden;
-    pointer-events: none;
 }
 
 #profilePage.active {
     opacity: 1;
     visibility: visible;
-    pointer-events: all;
 }
 
-/ GLASS /
+/ CONTAINER /
 .container {
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(20px);
     background: rgba(20,20,20,0.6);
-    border-radius: 15px;
     padding: 20px;
-    width: 90%;
-    max-width: 400px;
+    border-radius: 15px;
+    text-align: center;
 }
 
-/ LOGO /
-.logo span {
-    color: #7CFC00;
-    text-shadow: 0 0 10px #7CFC00;
+/ GLOW BORDER /
+.glow-border {
+    border: 2px solid transparent;
+    animation: glow 3s infinite linear;
 }
-
-/ INPUT /
-input {
-    padding: 10px;
-    width: 220px;
-    border-radius: 6px;
-    border: none;
-    margin-top: 15px;
-}
-
-/ BUTTON /
-button {
-    margin-top: 10px;
-    padding: 10px 20px;
-    background: #7CFC00;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    box-shadow: 0 0 10px #7CFC00;
+@keyframes glow {
+    0% {border-color: #7CFC00;}
+    50% {border-color: #00ffcc;}
+    100% {border-color: #7CFC00;}
 }
 
 / PROFILE /
 .pfp {
     width: 100px;
     border-radius: 50%;
-    box-shadow: 0 0 15px #7CFC00;
 }
 
 / USERNAME /
 .username {
     font-size: 22px;
-    margin-top: 10px;
     text-shadow: 0 0 10px #7CFC00;
 }
 
@@ -106,51 +85,41 @@ button {
 .badge {
     width: 22px;
     margin: 3px;
+    transition: 0.2s;
 }
-.badge:hover::after {
-    content: attr(data-name);
-    position: absolute;
-    bottom: -25px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: black;
-    padding: 4px 6px;
-    font-size: 10px;
-    border-radius: 4px;
+.badge:hover {
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 5px #7CFC00);
+}
+
+/ DISCORD /
+.discord-status {
+    margin-top: 8px;
+    color: #7CFC00;
 }
 
 / LINKS /
 .links a {
     display: flex;
     justify-content: center;
-    align-items: center;
     margin: 6px;
     color: #7CFC00;
     text-decoration: none;
 }
-.links a:hover {
-    text-shadow: 0 0 10px #7CFC00;
-}
-.links img {
-    width: 18px;
-    margin-right: 8px;
-}
 
-hr {
-    border: 1px solid #222;
-}
-
-/ PLAYER */
-.player {
-    margin-top: 15px;
-}
-.player button {
-    background: none;
-    color: #7CFC00;
-    font-size: 18px;
-}
+/ PLAYER /
 .player input {
     width: 100%;
-    height: 4px;
-    background: #222;
+}
+
+/ TOAST */
+#toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #111;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: none;
 }
