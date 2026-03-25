@@ -2,65 +2,65 @@ const PASSWORD = "CHANGE_ME";
 
 /* LOGIN /
 function login() {
-    const input = document.getElementById("password").value;
-
-    if (input === PASSWORD) {
-        const loginPage = document.getElementById("loginPage");
-        const profilePage = document.getElementById("profilePage");
-
-        loginPage.style.opacity = "0";
-
-        setTimeout(() => {
-            loginPage.style.display = "none";
-            profilePage.classList.add("active");
-            typeName();
-        }, 400);
-
-    } else {
-        alert("Wrong password");
-    }
+    if (document.getElementById("password").value === PASSWORD) {
+        document.getElementById("loginPage").style.display = "none";
+        document.getElementById("profilePage").classList.add("active");
+        type();
+    } else showToast("Wrong password");
 }
 
 / TYPING /
-const nameText = "YourName";
-let i = 0;
+function type() {
+    const name = "YourName";
+    const sub = "Developer • Crypto • Creator";
+    let i = 0;
+    let el = document.getElementById("typedName");
 
-function typeName() {
-    const el = document.getElementById("typedName");
-    el.innerHTML = "";
-
-    let interval = setInterval(() => {
-        if (i < nameText.length) {
-            el.innerHTML += nameText.charAt(i);
+    let t = setInterval(() => {
+        if (i < name.length) {
+            el.innerHTML += name[i];
             i++;
-        } else {
-            clearInterval(interval);
-        }
+        } else clearInterval(t);
     }, 80);
+
+    document.getElementById("subtitle").innerText = sub;
+}
+
+/ CURSOR /
+document.addEventListener("mousemove", e => {
+    const c = document.getElementById("cursor");
+    c.style.top = e.clientY + "px";
+    c.style.left = e.clientX + "px";
+});
+
+/ TOAST /
+function showToast(text) {
+    const t = document.getElementById("toast");
+    t.innerText = text;
+    t.style.display = "block";
+    setTimeout(() => t.style.display = "none", 1500);
 }
 
 / CRYPTO /
 const wallets = {
-    btc: "YOUR_BTC_ADDRESS",
-    eth: "YOUR_ETH_ADDRESS",
-    sol: "YOUR_SOL_ADDRESS",
-    trx: "YOUR_TRX_ADDRESS",
-    ltc: "YOUR_LTC_ADDRESS"
+    btc: "YOUR_BTC",
+    eth: "YOUR_ETH",
+    sol: "YOUR_SOL",
+    trx: "YOUR_TRX",
+    ltc: "YOUR_LTC"
 };
 
 function copy(type) {
     navigator.clipboard.writeText(wallets[type]);
+    showToast(type.toUpperCase() + " copied");
 }
 
 / MUSIC /
 const audio = document.getElementById("audio");
 const progress = document.getElementById("progress");
-let playing = false;
 
 function toggleMusic() {
-    if (playing) audio.pause();
-    else audio.play();
-    playing = !playing;
+    audio.paused ? audio.play() : audio.pause();
 }
 
 audio.ontimeupdate = () => {
@@ -71,11 +71,6 @@ progress.oninput = () => {
     audio.currentTime = (progress.value / 100) * audio.duration;
 };
 
-/ ENTER LOGIN /
-document.addEventListener("keydown", e => {
-    if (e.key === "Enter") login();
-});
-
 / PARTICLES */
 const canvas = document.getElementById("particles");
 const ctx = canvas.getContext("2d");
@@ -83,33 +78,21 @@ const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-let particles = [];
+let p = Array.from({length:100}, () => ({
+    x: Math.random()*canvas.width,
+    y: Math.random()*canvas.height,
+    dx: Math.random()-0.5,
+    dy: Math.random()-0.5
+}));
 
-for (let i = 0; i < 80; i++) {
-    particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        size: Math.random() * 2,
-        speedX: Math.random() - 0.5,
-        speedY: Math.random() - 0.5
+function draw() {
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    p.forEach(pt=>{
+        pt.x+=pt.dx;
+        pt.y+=pt.dy;
+        ctx.fillStyle="#7CFC00";
+        ctx.fillRect(pt.x,pt.y,2,2);
     });
+    requestAnimationFrame(draw);
 }
-
-function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    particles.forEach(p => {
-        p.x += p.speedX;
-        p.y += p.speedY;
-
-        if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
-        if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
-
-        ctx.fillStyle = "#7CFC00";
-        ctx.fillRect(p.x, p.y, p.size, p.size);
-    });
-
-    requestAnimationFrame(animate);
-}
-
-animate();
+draw();
