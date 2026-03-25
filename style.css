@@ -6,7 +6,15 @@ body {
     overflow: hidden;
 }
 
-/* FULL PAGE SCREENS /
+/* PARTICLES /
+#particles {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+/ SCREENS /
 #loginPage, #profilePage {
     position: fixed;
     width: 100%;
@@ -22,13 +30,13 @@ body {
     transition: opacity 0.4s ease;
 }
 
-/ LOGIN on top /
+/ LOGIN /
 #loginPage {
     z-index: 2;
     background: #0b0b0b;
 }
 
-/ PROFILE hidden properly /
+/ PROFILE /
 #profilePage {
     z-index: 1;
     background: #0b0b0b;
@@ -38,20 +46,29 @@ body {
     pointer-events: none;
 }
 
-/ ACTIVE STATE /
 #profilePage.active {
     opacity: 1;
     visibility: visible;
     pointer-events: all;
 }
 
-/ Logo /
+/ GLASS /
+.container {
+    backdrop-filter: blur(15px);
+    background: rgba(20,20,20,0.6);
+    border-radius: 15px;
+    padding: 20px;
+    width: 90%;
+    max-width: 400px;
+}
+
+/ LOGO /
 .logo span {
     color: #7CFC00;
     text-shadow: 0 0 10px #7CFC00;
 }
 
-/ Input /
+/ INPUT /
 input {
     padding: 10px;
     width: 220px;
@@ -60,7 +77,7 @@ input {
     margin-top: 15px;
 }
 
-/ Button /
+/ BUTTON /
 button {
     margin-top: 10px;
     padding: 10px 20px;
@@ -71,28 +88,21 @@ button {
     box-shadow: 0 0 10px #7CFC00;
 }
 
-/ Profile container /
-.container {
-    text-align: center;
-    width: 90%;
-    max-width: 400px;
-}
-
-/ Profile /
+/ PROFILE /
 .pfp {
     width: 100px;
     border-radius: 50%;
-    margin-top: 20px;
     box-shadow: 0 0 15px #7CFC00;
 }
 
-/ Username /
+/ USERNAME /
 .username {
     font-size: 22px;
     margin-top: 10px;
+    text-shadow: 0 0 10px #7CFC00;
 }
 
-/ Badges /
+/ BADGES /
 .badge {
     width: 22px;
     margin: 3px;
@@ -109,14 +119,17 @@ button {
     border-radius: 4px;
 }
 
-/ Links */
+/ LINKS /
 .links a {
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     margin: 6px;
     color: #7CFC00;
     text-decoration: none;
+}
+.links a:hover {
+    text-shadow: 0 0 10px #7CFC00;
 }
 .links img {
     width: 18px;
@@ -125,4 +138,19 @@ button {
 
 hr {
     border: 1px solid #222;
+}
+
+/ PLAYER */
+.player {
+    margin-top: 15px;
+}
+.player button {
+    background: none;
+    color: #7CFC00;
+    font-size: 18px;
+}
+.player input {
+    width: 100%;
+    height: 4px;
+    background: #222;
 }
