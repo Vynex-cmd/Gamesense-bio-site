@@ -3,41 +3,46 @@ body {
     font-family: Arial;
     background: #0b0b0b;
     color: white;
+    overflow: hidden;
+}
+
+/* FULL PAGE SCREENS /
+#loginPage, #profilePage {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    flex-direction: column;
+
+    transition: opacity 0.4s ease;
 }
 
-/* Loader /
-#loader {
-    text-align: center;
+/ LOGIN on top /
+#loginPage {
+    z-index: 2;
+    background: #0b0b0b;
 }
 
-.loading-text {
-    opacity: 0.6;
-    animation: pulse 1.5s infinite;
+/ PROFILE hidden properly /
+#profilePage {
+    z-index: 1;
+    background: #0b0b0b;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
 }
 
-@keyframes pulse {
-    0% {opacity: 0.3;}
-    50% {opacity: 1;}
-    100% {opacity: 0.3;}
-}
-
-/ Layout /
-.container {
-    text-align: center;
-    width: 90%;
-    max-width: 400px;
-    animation: fadeIn 0.5s ease;
-}
-
-.hidden { display: none; }
-
-@keyframes fadeIn {
-    from {opacity: 0; transform: translateY(10px);}
-    to {opacity: 1; transform: translateY(0);}
+/ ACTIVE STATE /
+#profilePage.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
 }
 
 / Logo /
@@ -49,7 +54,7 @@ body {
 / Input /
 input {
     padding: 10px;
-    width: 80%;
+    width: 220px;
     border-radius: 6px;
     border: none;
     margin-top: 15px;
@@ -64,6 +69,13 @@ button {
     border-radius: 6px;
     cursor: pointer;
     box-shadow: 0 0 10px #7CFC00;
+}
+
+/ Profile container /
+.container {
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
 }
 
 / Profile /
@@ -84,9 +96,7 @@ button {
 .badge {
     width: 22px;
     margin: 3px;
-    position: relative;
 }
-
 .badge:hover::after {
     content: attr(data-name);
     position: absolute;
@@ -99,7 +109,7 @@ button {
     border-radius: 4px;
 }
 
-/ Links /
+/ Links */
 .links a {
     display: flex;
     align-items: center;
@@ -107,13 +117,7 @@ button {
     margin: 6px;
     color: #7CFC00;
     text-decoration: none;
-    transition: 0.2s;
 }
-
-.links a:hover {
-    text-shadow: 0 0 10px #7CFC00;
-}
-
 .links img {
     width: 18px;
     margin-right: 8px;
@@ -121,13 +125,4 @@ button {
 
 hr {
     border: 1px solid #222;
-}
-
-/ Player */
-.player {
-    margin-top: 15px;
-}
-
-.player input {
-    width: 100%;
 }
