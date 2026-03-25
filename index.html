@@ -10,6 +10,7 @@
 <body>
 
 <canvas id="particles"></canvas>
+<div id="cursor"></div>
 
 <!-- LOGIN -->
 <div id="loginPage">
@@ -20,12 +21,14 @@
 
 <!-- PROFILE -->
 <div id="profilePage">
-    <div class="container">
+    <div class="container glow-border">
 
         <img src="images/pfp.png" class="pfp">
 
         <div class="username">
             <span id="typedName"></span>
+            <div id="subtitle"></div>
+
             <div class="badges">
                 <img src="images/badge-admin.png" class="badge" data-name="Admin">
                 <img src="images/badge-dev.png" class="badge" data-name="Developer">
@@ -33,7 +36,11 @@
             </div>
         </div>
 
-        <p class="bio">Your bio here...</p>
+        <div class="discord-status">
+            🟢 Online — discord.gg/yourserver
+        </div>
+
+        <p class="bio">Elite user. Crypto. Dev. Content creator.</p>
 
         <div class="links">
             <a href="#"><img src="images/instagram.png">Instagram</a>
@@ -51,7 +58,7 @@
         </div>
 
         <div class="player">
-            <button onclick="toggleMusic()">▶ / ⏸</button>
+            <button onclick="toggleMusic()">⏯</button>
             <input type="range" id="progress" value="0">
         </div>
 
@@ -61,6 +68,8 @@
 
     </div>
 </div>
+
+<div id="toast"></div>
 
 <script src="script.js"></script>
 </body>
